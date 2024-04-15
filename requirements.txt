@@ -1,0 +1,6 @@
+streamlit
+streamlit-option-menu
+torch
+transformers
+accelerate peft bitsandbytes 
+git+https://github.com/huggingface/transformers trl py7zr auto-gptq optimum
