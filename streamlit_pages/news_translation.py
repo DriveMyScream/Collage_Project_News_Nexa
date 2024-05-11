@@ -8,10 +8,10 @@ def translator(input_text, tokenizer, model):
     return decoded_text
 
 def app():
-    max_length = 30
+    max_length = 100
     output_language = ["Hindi", "Marathi"]
     model_links = {"Hindi": "Helsinki-NLP/opus-mt-en-hi", "Marathi": "Helsinki-NLP/opus-mt-en-mr"}
-    input_text = st.text_input("Enter News for Translation (Max {} characters):".format(max_length), height=200)
+    input_text = st.text_input("Enter News for Translation (Max {} characters):".format(max_length))
     selected_link = st.selectbox("Select Target Language for Translation:", options=output_language)
     link = model_links[selected_link]
     if len(input_text.split(" ")) <= max_length:

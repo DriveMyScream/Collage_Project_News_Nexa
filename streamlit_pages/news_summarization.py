@@ -4,18 +4,18 @@ from transformers import GenerationConfig, AutoTokenizer
 import torch
 
 def app():
-    max_length = 150
-    input_text = st.text_input("Enter News for Summarization (Max {} characters):".format(max_length), height=200)
+    max_length = 500
+    input_text = st.text_input("Enter News for Summarization (Max {} characters):".format(max_length))
     if len(input_text.split(" ")) <= max_length:
         if input_text:
             with st.spinner("Summarizing news..."):
-                tokenizer = AutoTokenizer.from_pretrained("/content/mistral-finetuned-news_summarization")
+                tokenizer = AutoTokenizer.from_pretrained("mistral/mistral-finetuned-news_summarization")
                 inputs = tokenizer(f"""
                 ###Human: Summarize this following news: {input_text}
                 ###Assistant: """, return_tensors="pt").to("cuda")
 
                 model = AutoPeftModelForCausalLM.from_pretrained(
-                    "/content/mistral-finetuned-news_summarization",
+                    "mistral/mistral-finetuned-news_summarization",
                     low_cpu_mem_usage=True,
                     return_dict=True,
                     torch_dtype=torch.float16,

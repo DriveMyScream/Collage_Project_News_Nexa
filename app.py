@@ -1,6 +1,6 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-from pages import fake_news_classification, news_classification, news_summarization, news_translation
+from streamlit_pages import fake_news_classification, news_classification, news_summarization, news_translation
 st.set_page_config(page_title="News Nexa")
 
 
